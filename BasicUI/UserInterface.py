@@ -33,9 +33,6 @@ class Button:
         text_rect = text_surface.get_rect(center=self.rect.center)
         screen.blit(text_surface, text_rect)
 
-    def is_hovered(self, mouse_pos):
-        return self.rect.collidepoint(mouse_pos)
-
     def click(self, mouse_pos):
         return self.rect.collidepoint(mouse_pos)
 
@@ -85,9 +82,9 @@ image_box_height = 400
 image = None
 
 # Create buttons
-okButton = Button(300, 700, 200, 80, (0, 255, 0), "Okay", (0, 0, 0))
-notOkButton = Button(550, 700, 200, 80, (255, 0, 0), "Not Okay", (0, 0, 0))
-uploadButton = Button(800, 700, 200, 80, (0, 0, 255), "Upload Image", (255, 255, 255))
+okButton = Button(300, 700, 200, 80, (100, 255, 100), "Okay", (0, 0, 0))
+notOkButton = Button(550, 700, 200, 80, (255, 100, 100), "Not Okay", (0, 0, 0))
+uploadButton = Button(800, 700, 200, 80, (100, 180, 255), "Upload Image", (0, 0, 0))
 
 # Create font
 font = pygame.font.Font(None, 36)
@@ -140,13 +137,8 @@ while run:
     notOkButton.draw(screen)
     uploadButton.draw(screen)
 
-    # Hover effect
-    okButton.color = (0, 200, 0) if okButton.is_hovered(mouse_pos) else (0, 255, 0)
-    notOkButton.color = (200, 0, 0) if notOkButton.is_hovered(mouse_pos) else (255, 0, 0)
-    uploadButton.color = (0, 0, 200) if uploadButton.is_hovered(mouse_pos) else (0, 0, 255) 
-
     # Draw text box
-    draw_text_box(screen, display_text, 0, 0, 400, 400, scroll_y)
+    draw_text_box(screen, display_text, 0, 0, 600, 500, scroll_y)
 
     # Draw the Image Display Box
     pygame.draw.rect(screen, (200, 200, 200), (image_box_x, image_box_y, image_box_width, image_box_height)) 
