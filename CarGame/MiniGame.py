@@ -17,12 +17,12 @@ level = 1
 screen = pygame.display.set_mode((width, height)) # Set the size of the screen
 
 # Load the cars
-car = pygame.image.load("CarGame/buck32.png")
+car = pygame.image.load("CarGame/car1.1.png") # https://helloartsy.com/how-to-draw-a-car-from-the-top/
 car_loc = car.get_rect()
 car_loc.center = left_lane, height*0.8
 
 # Enemy
-car2 = pygame.image.load("CarGame/leopard_stat3.png")
+car2 = pygame.image.load("CarGame/car2.png") # https://pngtree.com/freepng/car-view-from-above-icon-object-web-design-above-vector_10530579.html
 car2_loc = car.get_rect()
 car2_loc.center = right_lane, height*0.2
 
