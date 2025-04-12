@@ -17,7 +17,7 @@ level = 1
 screen = pygame.display.set_mode((width, height)) # Set the size of the screen
 
 # Load the cars
-car = pygame.image.load("CarGame/car1.1.png") # https://helloartsy.com/how-to-draw-a-car-from-the-top/
+car = pygame.image.load("CarGame/car1.png") # https://helloartsy.com/how-to-draw-a-car-from-the-top/
 car_loc = car.get_rect()
 car_loc.center = left_lane, height*0.8
 
