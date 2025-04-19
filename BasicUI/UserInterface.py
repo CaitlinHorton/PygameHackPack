@@ -129,6 +129,7 @@ while run:
 
     mouse_pos = pygame.mouse.get_pos()
 
+    # Clear screen
     screen.fill((255, 255, 255))
 
     # Draw buttons

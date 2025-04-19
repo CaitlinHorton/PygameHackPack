@@ -4,8 +4,8 @@ import random
 
 pygame.init()
 
-width = 1200
-height = 800
+width = 900
+height = 500
 road_w = int(width/1.6)
 roadmark_w = int(width/80)
 right_lane = width/2 + road_w/4
@@ -28,6 +28,8 @@ car2_loc.center = right_lane, height*0.2
 
 pygame.display.update()
 
+track = 0 # Track how many times it has been in that lane
+
 counter = 0
 run = True
 while run:
@@ -35,20 +37,44 @@ while run:
     # Increase difficuilty
     # Counter is how often it changes. Speed is how quickly it will start to go
     counter += 1
-    if counter == 2500:
+    if counter == 1500:
         speed += 0.25
         level += 1
         counter = 0
-        print("Level Up!", level)
+        # print("Level Up!", level)
 
     # Make the enemy car move
     car2_loc[1] += speed
     if car2_loc[1] > height: # Makes sure that it runs in a loop
         # Make it change lanes randomly off screen
+        # if random.randint(0,1)==0 and track<3:
+        #     car2_loc.center = right_lane, -150
+        #     track += 1
+        # elif random.randint(0,1)==0 and track == 3:
+        #     car2_loc.center = left_lane, -150
+        #     track = 0
+        # elif random.randint(0,1)==1 and track<3:
+        #     car2_loc.center = left_lane, -150
+        #     track += 1
+        # elif random.randint(0,1)==1 and track == 3:
+        #     car2_loc.center = right_lane, -150
+        #     track = 0
+
+# This won't work either
         if random.randint(0,1)==0:
-            car2_loc.center = right_lane, -150
-        else:
-            car2_loc.center = left_lane, -150
+            if track == [0,0,0]:
+                car2_loc.center = left_lane, -150
+                track = []
+            else:
+                track.append(0)
+                car2_loc.center = right_lane, -150
+        elif random.randint(0,1)==1:
+            if track == [1,1,1]:
+                car2_loc.center = right_lane, -150
+                track = []
+            else:
+                track.append(1)
+                car2_loc.center = left_lane, -150
 
     # End game
     if car_loc[0] == car2_loc[0] and car2_loc[1] > car_loc[1]-200: # Removing the 250 allows for the game to end when the edges touch - not when the centers touch
